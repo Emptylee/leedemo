@@ -1,0 +1,59 @@
+/*H5Component样式*/
+.midPage_wrap{
+	width:95%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.midPage_wrap .line{
+	width:100%;
+	height:20px;
+	margin-bottom:15px;
+}
+.midPage_wrap .name{
+	width:48px;
+	height:20px;
+	line-height:20px;
+	float:left;
+}
+.midPage_wrap .rate{
+	height:20px;
+	float:left;
+	margin-left:5px;
+	position:relative;
+
+}
+.midPage_wrap .rate .bg{
+	width:0;
+	height:20px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.midPage_wrap .percent{
+	width:22px;
+	height:20px;
+	line-height:20px;
+	float:right;
+	margin-left:5px;
+	opacity:1;
+}
+/*动画*/
+.load .rate .bg{
+	transition:all 1s 0.5s;
+	width:100%;
+}
+.load .rate .percent{
+	transition:all 1s 1s;
+	opacity:1;
+}
+
+.leave .rate .bg{
+	transition:all 1s;
+	width:0;
+}
+.leave .rate .percent{
+	transition:all 1s 1s;
+	opacity:0;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- 浏览器兼容问题 -->
+	<title>Bing搜索框</title>
+	<style>
+	body{background-color:#333;}
+	.bg-div{
+		width:1300px;
+		height:650px;
+		background:url(images/bg.png) no-repeat center center;
+		background-size:cover;
+		background-origin:50% 50%;
+		margin: 0 auto;
+		position:relative;
+	}
+	div.logo{
+		width: 107px;
+		height:53px;
+		background:url(images/logo.png) no-repeat;
+		float:left;
+		margin:-5px 9px 0 5px;
+	}
+	form{
+		float:left;
+		background-color:#fff;
+		padding:5px;
+	}
+	.text1{
+		border:0;
+		height:25px;
+		line-height:25px;
+		float:left;/*让按钮和输入框都左浮动 可以让他们对齐*/
+		outline:none;/*输入框不要有高亮边框区域*/
+		width:350px;
+	}
+	.submit1{
+		border:0;
+		background-image:url(images/search-button.png);
+		width:29px;
+		height:29px;
+		float:left;
+		cursor:pointer;
+	}
+	.pos-box{
+		position:absolute;
+		top:300px;
+		left:400px;
+	}
+	.suggest{
+		width:388px;
+		background-color:#fff;
+		border:1px solid #999;
+	}
+	.suggest ul{
+		list-style:none;
+		margin:0;/*先把ul默认样式去掉*/
+		padding:0;
+	}
+	.suggest ul li{
+		padding:3px;
+		font-size:14px;
+		height:25px;
+		line-height:25px;
+		cursor:pointer;
+	}
+	.suggest ul li:hover{
+		text-decoration:underline;
+		background-color:#e5e5e5;
+	}
+	</style>
+</head>
+<body>
+	<div class="bg-div">
+		<div class="pos-box">
+			<div class="logo"></div>
+			<form action="" id="form1">
+				<input type="text" class="text1" name="q" id="txt">
+				<input type="submit" class="submit1" value="">
+			</form>
+		</div>
+	</div>
+	<!-- 添加智能提示列表 -->
+	<div class="suggest" id="search-suggest" style="display:none">
+		<ul>
+			<li>搜索结果1</li>
+			<li>搜索结果2</li>
+			<li>搜索结果3</li>
+			<li>搜索结果4</li>
+		</ul>
+	</div>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script>
+	$("#txt").bind("keyup",function(){
+		var searchText=$('#txt').val();
+		$.get("http://api.bing.com/qsonhs.aspx?q="+searchText,function(d){},"json");
+		$("#search-suggest").show().css({
+			top:$("#txt").offset().top+$("#txt").height()+10,
+			left:$("#form1").offset().left,
+			position:"absolute"
+		});
+	});
+	</script>
+</body>
+</html>

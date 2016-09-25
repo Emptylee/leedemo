@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1">
+	<title>测试基本的环图</title>
+
+	<style>
+	body{
+		padding: 0;
+		margin: 0;
+		background:#000;
+		font-size:12px;
+	}
+	.iphone{
+		width:340px;
+		height:540px;
+		background-color:#fff;
+		position:absolute;
+		left:50%;
+		top:50%;
+		margin:-270px 0 0 -170px;/*向上向左移动使其居中*/
+	}
+	
+</style>
+<link rel="stylesheet" href="../css/H5ComponentBase.css">
+<script src="../js/lib/jquery.js"></script>
+<script src="../js/H5ComponentBase.js"></script>
+
+<!-- 以上两个仍然需要 还要新加雷达图的文件 -->
+
+<link rel="stylesheet" href="../css/H5ComponentRing.css">
+<script src="../js/H5ComponentRing.js"></script>
+</head>
+<body>
+<!--柱状图组件-->
+	<div class="iphone"></div><!--用来模拟一个手机-->
+<script>
+	var cfg={
+		type:'ring',
+		width:400,//相当于在正方形里面
+		height:400,
+		data:[
+			['JS',.87,'#ff7676']//环图只能体现一项数据
+		],
+		css:{
+			top:200
+		}, 
+		center:true,
+		animateIn:{top:200,opacity:1},
+		animateOut:{top:200,opacity:0}
+	};
+
+	var h5=new H5ComponentRing("myRingComponent",cfg);
+	$(".iphone").append(h5);
+
+	//用来直接点击屏幕就可以模拟onload和onleave事件的触发 不用在控制台触发了
+	var leave=true;
+	$('body').click(function(){
+		leave=!leave;//每次切换leave 第一次leave肯定是false
+		$('.h5_component').trigger(leave?'onleave':'onload');//第一次是leave为false 触发onload事件
+	});
+</script>
+</body>
+</html>

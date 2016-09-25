@@ -1,0 +1,18 @@
+/*雷达图样式*/
+.h5_component_pie{
+
+}
+.h5_component_pie canvas{
+	position:absolute;/*用canvas做动画，会进行分层，要用到z-index*/
+	top:0;
+	left:0;
+	width:100%;/*width和height用于将canvas压缩成容器大小 这样canvas中的东西显示在component容器中有双倍分辨率的精致*/
+	height:100%;
+}
+
+.h5_component_pie .text{
+	position: absolute;
+	text-align:center;
+	height:24px;
+	z-index:99;/*因为有三个层 为确保文字再最上层*/
+}

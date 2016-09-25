@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+	<title>practice</title>
+<style>
+	body{
+		font-family:"Microsoft Yahei";
+	}
+	#container{
+		width:500px;
+		margin:10px auto;
+		border:1px solid #ccc;
+		background-color: #999;
+		padding:10px;
+		border-radius:5px;
+	}	
+	#mName{
+		float:left;width:250px;
+	}
+	#mTime{
+		float:left;width:250px;text-align: center;
+	}
+	#player{
+		clear:both;
+		margin-top:45px;
+	}
+	#media{
+		width:450px;
+	}
+	#mList{
+		height:200px;
+	}
+	ul{list-style:none;padding-left: 5px;}
+	ul li{margin-top:8px;}
+	#changeMusic{text-align:right;}
+	a{text-decoration: none;color:black;}
+	a:hover{color:red;}
+</style>
+<script>
+	//声明两个数组，用来存储歌曲名称和文件地址
+	var musicNames=[],musicSrcs=[],randomNums=[];
+	var RANDOMNUM=3;
+
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	function initial(){
+		//为数组赋值
+		musicNames=["Chara - 燕尾蝶 - My Way","Flo Rida、Wynter Gordon - Sugar","宝儿 - Only One",'Sotte Bosse - 夜空ノムコウ','周杰伦 - 最后的战役','久石让 - Silent Love(Main Theme) - 纯音乐版'];
+		musicSrcs[0]="music/Chara - 燕尾蝶 - My Way.mp3";
+		musicSrcs[1]="music/Flo Rida、Wynter Gordon - Sugar.mp3";
+		musicSrcs[2]="music/宝儿 - Only One.mp3";
+		musicSrcs[3]="music/Sotte Bosse - 夜空ノムコウ.mp3";
+		musicSrcs[4]="music/周杰伦 - 最后的战役.mp3";
+		musicSrcs[5]="music/久石让 - Silent Love(Main Theme) - 纯音乐版 - 《那年夏天,宁静的海》 OST.mp3";
+		//获取元素
+		media=$("media");//之后用很多所以初始化
+		//绑定事件
+		media.addEventListener("canplay",media_canplay,false);
+		media.addEventListener("play",media_play,false);
+		//获取歌曲
+		loadMusic();
+	}
+
+/*方法：判断r在randomNum中是否已经存在 返回true：已经存在，返回false：不存在*/
+	function checkRExists(r){
+		for(var i=0;i<randomNums.length;i++){
+			if(randomNums[i]==r){
+				//存在
+				return true;
+			}
+		}
+		return false;
+	}
+
+/***哟雨方法：用于生成指定个数的随机数
+    如果碰到重复数字 则重新生成*/
+	function generateRamdom(){
+		var i=0;
+		for(;;){//死循环
+			var r=parseInt(Math.random()*musicNames.length);
+
+			//判断r是否已经生成过
+			if(checkRExists(r)){
+				//数字已经存在，不能存进数组
+				continue;
+			}
+			//将r保存在randomNums中，并i++
+			randomNums[i]=r;
+			//退出循环条件
+			if(i==RANDOMNUM){
+				return;
+			}
+			i++;
+		}
+	}
+
+/*方法：加载或更换歌曲的方法随机读取三首*/
+	function loadMusic(){
+		//用randomNums数组来获取歌曲
+		//生成三个不重复的数字存进randomNums中
+		generateRamdom();
+		$("uMusic").innerHTML="";
+		for(var i=0;i<randomNums.length;i++){
+			var mName=musicNames[randomNums[i]];
+			var mSrc=musicSrcs[randomNums[i]];
+			var aTar=document.createElement("a");
+			aTar.innerHTML=mName;
+			aTar.setAttribute("href","javascript:play('"+mName+"','"+mSrc+"');");//以双引号为一个部分，记着双引号内部的所有都是显示的内容
+
+			var liTar=document.createElement("li");
+			liTar.appendChild(aTar);
+			$("uMusic").appendChild(liTar);
+		}
+	}
+
+/*方法，播放音乐 
+ *name:播放的音乐名称 用于显示
+ *src:音乐路径，用于指定给audio.src
+ */
+ 	function play(name,src){
+ 		//1更新歌曲名称
+ 		$("mName").innerHTML=name;
+ 		//2更新audio.src
+ 		media.src=src;
+ 	}
+
+/*
+ *当媒体下载可放帧时激发的事件*/
+ 	function media_canplay(e){
+ 		var duration=Math.ceil(e.target.duration);
+ 		//1更新时长
+ 		var fTime=formatTime(duration);
+ 		$("mTime").innerHTML=fTime;
+ 		
+ 		e.target.play();//下载到一定播放帧后就可以播放了
+ 	}
+
+/*
+ *方法 媒体播放时触发的事件
+ *1 更新时长
+ */
+ 	function media_play(e){
+ 		loop=setInterval(function(){
+ 			var left=Math.ceil(e.target.duration-e.target.currentTime);
+ 			var fTime=formatTime(left);
+ 			$("mTime").innerHTML=fTime;
+ 		},1000);
+ 	}
+
+/*方法 格式化事时间*/
+ 	function formatTime(seconds){
+ 		var min=parseInt(seconds/60);
+ 		var second=parseInt(seconds%60);
+ 		if(min<10){
+ 			min="0"+min;
+ 		}
+ 		if(second<10){
+ 			second="0"+second;
+ 		}
+ 		
+ 		return min+":"+second;
+ 	}
+
+	window.addEventListener("load",initial,false);
+</script>
+</head>
+<body>
+	<section id="container">
+		<nav id="menu">
+			<div id="mName">歌曲名称</div>
+			<div id="mTime">00:00</div>
+		</nav>
+		<nav id="player">
+			<audio controls id="media" src=""></audio>
+		</nav>
+		<nav id="mList">
+			<ul id="uMusic">
+				
+			</ul>
+		</nav>
+		<nav>
+			<div id="changeMusic">
+				<a href="javascript:loadMusic();">换歌</a>
+			</div>
+		</nav>
+	</section>
+</body>
+</html>

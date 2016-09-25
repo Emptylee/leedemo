@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1">
+	<title>测试基本的图文组件</title>
+
+	<style>
+	body{
+		padding: 0;
+		margin: 0;
+		background:#000;
+		font-size:12px;
+	}
+	.iphone{
+		width:340px;
+		height:540px;
+		background-color:#fff;
+		position:absolute;
+		left:50%;
+		top:50%;
+		margin:-270px 0 0 -170px;/*向上向左移动使其居中*/
+	}
+	
+</style>
+<link rel="stylesheet" href="../css/H5ComponentBase.css">
+<script src="../js/lib/jquery.js"></script>
+<script src="../js/H5ComponentBase.js"></script>
+</head>
+<body>
+<!--用于测试开发H5ComponentBase对象 即基本的图文组件-->
+	<div class="iphone"></div><!--用来模拟一个手机-->
+<script>
+	var cfg={//参数 用一个对象传入
+		type:'base',
+		text:'文本内容',
+		width:516,//传入的是图片的原始大小，是真正显示时的2倍
+		height:304,//默认px为单位
+		bg:'people.png',
+		css:{
+			bottom:80,
+			opacity:0
+		},
+		center:true,//专门控制居中效果
+		animateIn:{bottom:80,opacity:1},
+		animateOut:{bottom:0,opacity:0}
+	};
+
+	var h5=new H5ComponentBase("myName",cfg);
+	$(".iphone").append(h5);
+
+	//用来直接点击屏幕就可以模拟onload和onleave事件的触发 不用在控制台触发了
+	var leave=true;
+	$('body').click(function(){
+		leave=!leave;//每次切换leave 第一次leave肯定是false
+		$('.h5_component').trigger(leave?'onleave':'onload');//第一次是leave为false 触发onload事件
+	});
+</script>
+</body>
+</html>

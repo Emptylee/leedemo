@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width" initial-scale="1">
+	<title>鼠标悬停显示提示框</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<style>
+	/*先将hover时的最终状态写出来，然后用各种transform去控制，即将
+	五个初始状态分别设置各种位移和旋转，并设opacity:0 然后hover的时候五个状态统一设置为所有
+	位移和旋转归零，opacity:1
+	还要注意凡是涉及到过渡的元素都要设transition 这里有a content i 三个都要加transition*/
+		html{
+			width:100%;height:100%;
+			text-size-adjust:none;
+			-webkit-text-size-adjust:none;
+			-moz-text-size-adjust:none;
+			-o-text-size-adjust:none;
+			-ms-text-size-adjust:none;
+		}
+		body{
+			width:100%;
+			height:100%;
+			margin:0;
+			padding:0;
+			background:#47c9af;
+			color:#74777b;
+			font-size:1.5em;
+			font-family:Raleway,Arial;
+			font-weight:300;
+		}
+		ul{
+			list-style:none;
+			padding: 0;
+			margin: 0;
+		}
+		a:link,a:visited,a:focus{
+			text-decoration:none;
+			outline:none;
+		}
+		*,*:before,*:after{
+			box-sizing:border-box;  /*让盒子的宽度始终等于width所设置的值，即border和padding                   被包含在width里面了*/
+		}
+		*:before,*:after{
+			display:block;
+			content:"";
+		}
+		*:after{
+			clear:both;
+		}
+
+		/*naviagtor start*/
+		.nav{
+			width:850px;
+			height:300px;
+			margin:200px auto;
+		}
+		li{
+			display:inline-block;
+			margin:0 1em;
+		}
+		.tooltip{
+			display:inline-block;
+			font-weight:700;
+			color:rgba(0,0,0,0.8);
+			padding:0.15em 0.25em;
+			position:relative;
+			z-index:999;
+			transition:color .5s;
+		}
+		.tooltip-content{
+			position:absolute;
+			z-index:9999;
+			width:80px;
+			height: 80px;
+			background-color: #fff;
+			border-radius:50%;
+			left:50%;
+			margin-left:-40px; /*也可以用translate */
+			bottom:100%;
+			margin-bottom:20px;
+			text-align:center;
+			padding-top:25px;
+			color:#47c9af;
+			opacity:0;
+			transition:all 0.5s;   /*transition也会控制opacity*/
+		}
+		.tooltip .tooltip-content i{
+			opacity:0;
+			transition:all 0.5s;
+		}
+		.tooltip-content:after{
+			display: block;
+			content: "";
+			width:30px;
+			height:20px;
+			background:url(img/tooltip1.svg) no-repeat center center;
+			position:absolute;
+			top:100%;
+			left:25px;
+			margin-top:-7px;
+		}
+		.tooltip-effect-1 .tooltip-content{
+			transform-origin:bottom;
+			transform:translate3d(0,10px,0) rotate3d(1,1,1,45deg);
+		}
+		.tooltip-effect-1 .tooltip-content i{
+			transform:scale3d(0,0,1);
+		}
+		.tooltip-effect-2 .tooltip-content{
+			transform:translate3d(0,20px,0);
+		}
+		.tooltip-effect-2 .tooltip-content i{
+			transform:translate3d(0,15px,0);
+		}
+		.tooltip-effect-3 .tooltip-content{
+			transform:rotate3d(0,1,0,90deg) translate3d(0,10px,0);
+			transform-origin:50% 100%;
+		}
+		.tooltip-effect-3 .tooltip-content i{
+			transform:scale3d(0,0,0);
+		}
+		.tooltip-effect-4 .tooltip-content{
+			transform:translate3d(0,-20px,0);
+		}
+		.tooltip-effect-4 .tooltip-content i{
+			transform:translate3d(0,20px,0);
+		}
+		.tooltip-effect-5 .tooltip-content{
+			transform:scale3d(0,0,1);
+			transform-origin:50% 100%;
+		}
+		.tooltip-effect-5 .tooltip-content i{
+			transform:translate3d(0,20px,0);   /*3d漏了找半天*/
+		}
+		.tooltip:hover .tooltip-content,.tooltip:hover .tooltip-content i{
+			opacity:1;
+			transform:translate3d(0,0,0) rotate3d(0,0,0,0) scale3d(1,1,1);
+		}
+		.tooltip:hover{
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li>
+				<a href="" class="tooltip tooltip-effect-1">Home
+					<span class="tooltip-content"><i class="fa fa-home fa-fw"></i></span>
+				</a>
+			</li>
+			<li>
+				<a href="" class="tooltip tooltip-effect-2">About Me
+					<span class="tooltip-content"><i class="fa fa-user fa-fw"></i></span>
+				</a>
+			</li>
+			<li>
+				<a href="" class="tooltip tooltip-effect-3">Photography
+					<span class="tooltip-content"><i class="fa fa-camera-retro fa-fw"></i></span>
+				</a>
+			</li>
+			<li>
+				<a href="" class="tooltip tooltip-effect-4">Work
+					<span class="tooltip-content"><i class="fa fa-briefcase fa-fw"></i></span>
+				</a>
+			</li>
+			<li>
+				<a href="" class="tooltip tooltip-effect-5">Contact
+					<span class="tooltip-content"><i class="fa fa-envelope fa-fw"></i></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

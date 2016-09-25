@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+		*{margin:0;padding:0;}
+		#demo{
+			display:block;
+			width:225px;
+			height:150px;
+			margin:50px;
+			position:relative;
+			border:1px solid #ccc;
+		}
+		#small-box{
+			position:relative;
+			z-index:1;
+		}
+		#float-box{
+			display:none;
+			width:75px;
+			height:50px;
+			position:absolute;
+			background:#ffffcc;
+			border:1px solid #ccc;
+			filter:alpha(opacity=50);
+			opacity:0.5;
+		}
+		#mark{
+			position:absolute;
+			display:block;
+			width:225px;
+			height:150px;
+			/*要给mark层加上背景 这样IE中才能有效果*/
+			background-color:#fff;
+			filter:alpha(opacity=0);
+			opacity:0;
+			z-index:10;
+		}
+		#big-box{
+			display:none;
+			position:absolute;
+			top:0;
+			left:285px;
+			width:225px;
+			height:150px;
+			overflow: hidden;
+			border:1px solid #ccc;
+			z-index:1;
+		}
+		#big-box img{
+			position:absolute;
+			z-index:5;
+		}
+	</style>
+<script>
+	window.onload=function(){
+		var objDemo=document.getElementById("demo");
+		var objSmallBox=document.getElementById("small-box");
+		var objMark=document.getElementById("mark");
+		var objFloatBox=document.getElementById("float-box");
+		var objBigBox=document.getElementById("big-box");
+		var objBigBoxImage=objBigBox.getElementsByTagName("img")[0];
+
+		objMark.onmouseover=function(){
+			objFloatBox.style.display="block";
+			objBigBox.style.display="block";
+		}
+
+		objMark.onmouseout=function(){
+			objFloatBox.style.display="none";
+			objBigBox.style.display="none";
+		}
+
+		objMark.onmousemove=function(e){
+			var _event=e||window.event;
+			
+			var left=_event.clientX-objDemo.offsetLeft-objSmallBox.offsetLeft-objFloatBox.offsetWidth/2;
+			var top=_event.clientY-objDemo.offsetTop-objSmallBox.offsetTop-objFloatBox.offsetHeight/2;
+		
+			if(left<0){
+				left=0;
+			}else if(left>objMark.offsetWidth-objFloatBox.offsetWidth){
+				left=objMark.offsetWidth-objFloatBox.offsetWidth;
+			}
+			if(top<0){
+				top=0;
+			}else if(top>objMark.offsetHeight-objFloatBox.offsetHeight){
+				top=objMark.offsetHeight-objFloatBox.offsetHeight;
+			}
+		/*objFloatBox 即放大镜的left指的是那个半透明框的左上角相对于它的relative的父元素small-box的左边缘的距离。由于_event.clientX-objDemo.offsetLeft-objSmallbox.offsetLeft-objFloatBox.offsetWidth/2;减出来的left刚好是假设鼠标位于放大镜中央时objFloatBox的left 因此 将它作为left 即:objFloatBox.style.left=left+"px";这样刚好使得鼠标的移动位于放大镜中央 top同理*/
+			objFloatBox.style.left=left+"px";
+			objFloatBox.style.top=top+"px";
+
+			var percentX=left/(objMark.offsetWidth-objFloatBox.offsetWidth);
+			var percentY=top/(objMark.offsetHeight-objFloatBox.offsetHeight);
+			
+			objBigBoxImage.style.left=-percentX*(objBigBoxImage.offsetWidth-objBigBox.offsetWidth)+"px";
+			objBigBoxImage.style.top=-percentY*(objBigBoxImage.offsetHeight-objBigBox.offsetHeight)+"px";
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="demo">
+		<div id="small-box">
+			<div id="mark"></div>
+			<div id="float-box"></div><!-- 放大镜 -->
+			<img src="demo-small.jpg" alt="castle">
+		</div>
+
+		<div id="big-box"><!-- 显示大图的显示框 -->
+			<img src="demo-big.png" alt="castle">
+		</div>
+	</div>
+	<!-- absolute：相对于static定位以外的第一个父元素进行定位。也就是父元素的position取值可以是：absolute fixed relative inherit.显然，最可能和常用的取值是 relative 但是这里 img的父元素也是absolute i所以img的定位是相对于big-box的 -->
+
+	<!--为什么要有mark层？若是鼠标直接在small-box上移动也是可以的 在chrome中没问题 但是在IE中，会出现这样的问题：当鼠标在small-box上时，onmouseover触发，float-box变为block 由于float-box是absolute 位于small-box之上 所以鼠标与small-box之间还有一个float-box 于是鼠标没有接触small-box 触发onmouseout float-box又变为none 鼠标又与small-box接触 再次出发onmouseover 如此反复循环
+
+	所以，要有一个mark层，位于最高一层，直接与鼠标接触 这样就不会有上面的问题，同时将mark层设为透明。注意，鼠标是通过e.clientX与e.clientY来改变放大镜即float-box的left和top的 而不是直接拖拽放大镜 所以float-box不需要与鼠标直接接触-->
+</body>
+</html>

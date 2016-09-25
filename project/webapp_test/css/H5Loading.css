@@ -1,0 +1,47 @@
+body{
+	position:fixed;
+	width:100%;
+	height:100%;
+}
+.loading{
+	width:60px;
+	height:60px;
+	position:relative;
+	top:50%;
+	margin:-30px auto;
+}
+.bounce1,.bounce2{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	border-radius:50%;
+	background-color:#0062e0;
+	opacity:0.6;/*否则后一个会覆盖前一个的效果*/
+}
+.bounce1{
+	-webkit-animation:blink1 1s infinite ease-in-out 0s;
+}
+@-webkit-keyframes blink1{
+	0%,100%{transform:scale(0);}
+	50%{transform:scale(1);}
+}
+.bounce2{
+	-webkit-animation:blink2 1s infinite ease-in-out 0s;
+}
+@-webkit-keyframes blink2{
+	0%,100%{transform:scale(1);}
+	50%{transform:scale(0);}
+}
+
+#rate{
+	font-size:9px;
+	width:100%;
+	text-align:center;
+	height:20px;
+	line-height:20px;
+	color:#0062e0;
+	position: absolute;
+	top:100%;
+}

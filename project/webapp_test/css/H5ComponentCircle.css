@@ -1,0 +1,29 @@
+.circle_wrap{
+	width:60%;
+	height:60px;
+	position:absolute;
+	bottom:30px;
+	left:50%;
+	transform:translateX(-50%);
+}
+.circle{
+	width:60px;
+	height:60px;
+	border-radius:50%;
+	text-align:center;
+	line-height:50px;
+	color:#000;
+	opacity: 1;
+	position:absolute;
+	top:-500px;
+	opacity: 0;
+	z-index:99;
+}
+.circle1{
+	background: #6BC235;
+	left:0;
+}
+.circle2{
+	background: #FAE371;
+	right:0;
+}

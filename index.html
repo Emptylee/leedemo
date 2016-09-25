@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="个人简历">
+	<meta name="author" content="李智">
+	<title>My Resume</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.2/jquery.fullPage.css">
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/lib/jquery.fullPage.js"></script>
+
+	<link rel="stylesheet" href="style/index.css">
+	<script src="js/index.js"></script>
+</head>
+<body>
+<!--导航条 独立于fullpage-->
+	<div class="navbar navbar-inverse navbar-fixed-top" style="font-size:16px">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".c1">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">LEE</a>
+		</div>
+		<div class="collapse navbar-collapse c1">
+			<ul class="nav navbar-nav">
+				<li><a href="#page1">首页</a></li>
+				<li><a href="#page2">作品展示</a></li>
+				<li><a href="#page3">前端技能</a></li>
+				<li><a href="#page4">关于我</a></li>
+				<li id="music" style="width:700px"><a href="javascript:void(0);" style="display:block;float:right"><span class="glyphicon glyphicon-music"></a></span></li>
+				<li id="github" style="width:50px"><a href="javascript:void(0);" style="display:block;width:25px;height:25px;float:right"><img src="images/github.png" style="display:block;width:25px;height:25px"></a></li>
+				
+			</ul>
+		</div>
+	</div>
+	<div>
+		<audio src="music/1.mp3" id="media"></audio>
+	</div>
+<!--主体部分 分为四页-->
+	<div id="fullpage">
+		<div class="section section1" id="page1">
+			<div class="wrap">
+				<div id="me"></div>
+				<div id="message">
+					<p>你好！我叫李智,一个进过实验室,学过经济学,办过培训班的前端程序猿。</p>
+				</div>
+			</div>
+		</div>
+		<!-- section2 -->
+		<div class="section section2" id="page2">
+			<div class="slide" id="slide1">
+				<div class="wrap">
+					<div class="frames effect">
+						<div class="sharp"></div>
+						<a href="project/netease/index.html" target="_blank">
+							<img src="images/netease.png" alt="1">
+							<p>网易微专业-Web前端开发实践(原生JS/CSS/HTML5)</p>
+						</a>
+					</div>
+					<div class="frames effect">
+						<div class="sharp"></div>
+						<a href="project/componentWebapp/index.html" target="_blank">
+							<img src="images/componentWebapp.jpg" alt="1">
+							<p>移动端H5可视化数据报告(JQUERY/fullPage)</p>
+						</a>
+					</div>
+					<div class="frames effect">
+						<div class="sharp"></div>
+						<a href="project/plane_game/index.html" target="_blank">
+							<img src="images/plane.png" alt="1">
+							<p>飞机大战游戏(原生JS)</p>
+						</a>
+					</div>
+					<div class="frames effect more">
+						<div class="sharp"></div>
+						<a href="#">
+							<img src="images/more.png" alt="1">
+							<p>更多</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="slide" id="slide2">
+				<div class="mask"></div>
+				<div class="box">
+					<ul>
+						
+						<li>
+							<a href="project/reader/index.html" target="_blank">
+								<div><img src="images/reader.png" alt="阅读器"></div>	
+								<p>移动端Web app 阅读器</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/webapp_test/index.html" target="_blank">
+								<div><img src="images/xingzuo.png" alt="webapp"></div>	
+								<p>移动端H5星座Web App</p>
+							</a>
+						</li>
+							<li>
+							<a href="project/baidu_css/index.html" target="_blank">
+								<div><img src="images/baidu.png" alt="百度页面"></div>	
+								<p>百度页面</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/searchengine/index.html" target="_blank">
+								<div><img src="images/searchengine.png" alt="浏览器博物馆"></div>	
+								<p>浏览器博物馆页面</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/vancl_css/index.html" target="_blank">
+								<div><img src="images/vancl.png" alt="凡客页面"></div>	
+								<p>凡客页面</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/countdown/index.html" target="_blank">
+								<div><img src="images/countdown.png" alt="倒计时"></div>	
+								<p>倒计时效果</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/magnifier/index.html" target="_blank">
+								<div><img src="images/magnifier.png" alt="放大镜"></div>	
+								<p>放大镜效果</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/threed_css/index.html" target="_blank">
+								<div><img src="images/threed.png" alt="3D翻转效果"></div>	
+								<p>3D旋转效果</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/threed_hover_css/index.html" target="_blank">
+								<div><img src="images/threed_hover.png" alt="鼠标悬停提示框"></div>	
+								<p>鼠标悬停提示框效果</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/search_being/index.html" target="_blank">
+								<div><img src="images/search_being.png" alt="搜索框"></div>	
+								<p>搜索框效果</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/musicplayer/index.html" target="_blank">
+								<div><img src="images/music.png" alt="音乐播放器"></div>	
+								<p>音乐播放器</p>
+							</a>
+						</li>
+						<li>
+							<a href="project/freestyleweb/index.html" target="_blank">
+								<div><img src="images/freeStyle.png" alt="freeStyle"></div>	
+								<p>freeStyle</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- section3 -->
+		<div class="section section3" id="page3">
+			<div class="mask"></div>
+			<div class="content">
+				<div class="wrap">
+					<canvas id="canvas" width="1000" height="200"></canvas>
+				</div>
+
+				<div class="description">
+					<div class="desc_mask"></div>
+					<div class="desc_content">
+						<p>1 熟练掌握<kbd style="color:#FF0080;font-size:20px">html/css</kbd>以及<kbd style="color:#FF0080;font-size:20px">css3</kbd>新特性。</p>
+						<p>2 熟练掌握原生<kbd style="color:#F7F700;font-size:20px">JavaScript</kbd>、<kbd style="color:#F7F700;font-size:20px">DOM</kbd>、<kbd style="color:#F7F700;font-size:20px">BOM</kbd>,能用原生js做出各种页面交互效果。</p>
+						<p>3 熟练掌握<kbd style="color:#22B14C;font-size:20px">HTML5</kbd>新标签，<code style="font-size:20px">理解离线应用</code>与<code style="font-size:20px">客户端存储</code>。能掌握HTML5新增常用API。</p>
+						<p>4 熟练应用<kbd style="color:#00A2E8;font-size:20px">jquery</kbd>、<kbd style="color:#00A2E8;font-size:20px">bootstrap</kbd>框架,对网页设计有一定的审美与鉴赏能力。</p>
+						<p>5 熟悉<code style="font-size:20px">前后端数据交互</code>。熟悉<kbd style="color:#ED1C24;font-size:20px">ajax</kbd>原理。</p>
+						<p>6 熟练操作常用<kbd style="font-size:20px">photoshop</kbd>功能。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- section4-->
+		<div class="section section4" id="page4">
+			<div class="mask"></div>
+			<div class="wrapper_final">
+				<div class="btn_final btn_final1">
+					过去
+					<p>13年大学毕业，之前学过生物技术，经济学，计算机编程。大学毕业后创办培训机构。看似孤立的经历，教会我用更多维度的视角去认识世界，让我对未来的选择更加坚定。</p>
+				</div>
+				<div class="btn_final btn_final2">
+					现在
+					<p>专注前端开发,加入李笑来创办的新生大学,永远怀着空杯心态去虚心探索,Stay hungry,Stay foolish.</p>
+				</div>
+				<div class="btn_final btn_final3">
+					未来
+					<p>
+						<span>联系电话：15859303501</span>
+						<span>微信号：lz-peace</span>
+						<span>微信号二维码：</span>
+						<img src="images/findme.png" alt="二维码读取错误">
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

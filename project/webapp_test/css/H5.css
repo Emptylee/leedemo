@@ -1,0 +1,146 @@
+/*用来做firstPage secondPage finalPage中的主要样式 以及midPage中的总体样式*/
+/*首页*/
+#firstPage{
+	background-image:url(../images/face_bg.png);
+	background-size:cover;
+	background-position:50% 50%;
+	position:relative;
+}
+#firstPage .titleBg{
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-75px;
+	width:150px;
+	height:150px;
+	border-radius:50%;
+	background-color:#1598D1;
+	opacity:0.7;
+	z-index:1;
+	-webkit-animation:mymove 3s infinite 1s;
+}
+#firstPage .title{
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:120px;
+	margin:-15px 0 0 -60px;
+	z-index:99;
+	text-align:center;
+	font-size:16px;
+}
+@-webkit-keyframes mymove{
+	30%{box-shadow: 0 0 3px 3px #81B9D1}
+	60%{box-shadow: 0 0 8px 8px #81B9D1}
+	90%{box-shadow: 0 0 44px 12px #81B9D1}
+}
+/*第二页*/
+#secondPage .wrap{
+	width:25%;
+	margin:15px;
+	float:left;
+	-webkit-animation:shake 3s infinite 1s;
+}
+@-webkit-keyframes shake{
+	0%{transform:rotate(0deg);}
+	25%{transform:rotate(-10deg);}
+	75%{transform:rotate(10deg);}
+	100%{transform:rotate(0deg);}
+}
+#secondPage .imgBg{
+	width:100%;
+	height:100px;
+	background-size:100%;
+	background-repeat:no-repeat;
+}
+#secondPage .secondPage_text{
+	text-align:center;
+}
+/*中间页*/
+.midPage{
+	position:relative;
+}
+.midPage img{
+	position:absolute;
+	top:30px;
+	left:50%;
+	margin-left:-28px;
+
+}
+.midPage .text{
+	width:100px;
+	position:absolute;
+	top:120px;
+	left:50%;
+	margin-left:-50px;
+	text-align:center;
+}
+/*尾页*/
+#finalPage{
+	position:relative;
+}
+#finalPage img{
+	position:absolute;
+	top:30px;
+	left:50%;
+	margin-left:-28px;
+
+}
+#finalPage .text{
+	width:100px;
+	position:absolute;
+	top:120px;
+	left:50%;
+	margin-left:-50px;
+	text-align:center;
+}
+#finalPage .share{
+	display:block;
+	width:64px;
+	height:64px;
+	position: absolute;
+	top:300;
+	left:0;
+	opacity:0;
+}
+#finalPage .load{
+	transition:all 1s 1s;
+	top:0;
+	left:320px;/*right:0为什么没用*/
+	opacity: 1;
+}
+#finalPage .leave{
+	transition:all 1s;
+	top:300;
+	right:0;
+	opacity: 0;
+}
+
+#finalPage #finalContent{
+	width:80%;
+	height:300px;
+	position:absolute;
+	left:50%;
+	transform:translateX(-50%);
+	bottom:150px;
+	line-height:20px;
+	text-indent:2em;
+	font-weight:600;
+	font-size:14px;
+}
+
+#finalPage .back{
+	width:80px;
+	height:80px;
+	border-radius: 50%;
+	position:absolute;
+	left:50%;
+	transform:translateX(-50%);
+	bottom:-100px;
+	background:#1598D1;
+
+	height:80px;
+	line-height: 80px;
+	text-align:center;
+	font-size: 14px;
+}

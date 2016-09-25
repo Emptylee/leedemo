@@ -1,0 +1,38 @@
+/*雷达图样式*/
+.h5_component_ring{
+
+}
+.h5_component_ring canvas{
+	position:absolute;/*用canvas做动画，会进行分层，要用到z-index*/
+	top:0;
+	left:0;
+	width:100%;/*width和height用于将canvas压缩成容器大小 这样canvas中的东西显示在component容器中有双倍分辨率的精致*/
+	height:100%;
+}
+
+.h5_component_ring .mask{
+	position:absolute;
+	left:50%;
+	top:50%;
+	background:#fff;
+	border-radius:50%;
+	z-index:99;
+}
+
+.h5_component_ring .text{
+	width:30px;
+	height:20px;
+	line-height: 20px;
+	font-weight:bold;
+	text-align:center;
+
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-10px 0 0 -15px;
+
+}
+
+.h5_component_name_ring_3{
+	margin-left:172px;
+}

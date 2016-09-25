@@ -1,0 +1,115 @@
+*{
+	padding:0;
+	margin:0;
+}
+body{
+	width:100%;
+	height:100%;
+	background:#191919;
+	font-family:Arial;
+	font-size:24px;
+	font-weight:bold;
+	color:#fff;
+	text-align:center;
+}
+
+a{
+	text-decoration: none;
+	display:block;
+	width:100%;
+	height:150px;
+	font-weight:bold;
+	color:#fff;
+	position:absolute;
+
+}	
+a,a.link,a:hover,a:visited{
+	text-decoration: none;
+}
+div.top,div.bottom,div.middle{
+	width:1000px;
+	margin: 20px auto;
+}
+div.cube{
+	width:180px;
+	height:150px;
+	margin:0 20px 10px 0;
+	float:left;
+	-webkit-transition:all 0.8s;	
+	-moz-transition:all 0.8s;	
+	-o-transition:all 0.8s;	
+	transition:all 0.8s;
+}
+.cube1,.cube2,.cube3,.cube4,.cube5,.cube6,.cube7,.cube8,.cube9,.cube10{
+	position:relative;
+}
+.middle .cube{
+	height:310px;
+}
+.show{
+	width:580px;
+	height:310px;
+	margin-right: 20px;
+	float:left;
+	background:url(../images/small/bg.png);
+	background-position: 50% 50%;
+}
+.middle_side{
+	width:180px;
+	height:150px;
+	margin-bottom:10px;
+	position:relative;
+}
+
+.color1,.color2,.color3,.color4,.color5,.color6,.color7,.color8,.color9,.color10,.color11,.color12,.color13,.color14{
+	background-size:cover;
+	background-position:50% 50%;
+}
+.color1{background:url(../images/small/9.jpg);
+			}
+.color2{background:url(../images/small/2.jpg);}
+.color3{background:url(../images/small/3.jpg);}
+.color4{background:url(../images/small/4.jpg);}
+.color5{background:url(../images/small/5.jpg);}
+.color6{background:url(../images/small/6.jpg);}
+.color7{background:url(../images/small/7.jpg);}
+.color8{background:url(../images/small/8.jpg);}
+.color9{background:url(../images/small/1.jpg);}
+.color10{background:url(../images/small/10.jpg);}
+.color11{background:url(../images/small/11.png);}
+.color12{background:url(../images/small/12.jpg);}
+.color13{background:url(../images/small/13.jpg);}
+.color14{background:url(../images/small/14.jpg);}
+
+
+
+.mask{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height: 150px;
+	background:rgba(0,0,0,0.0);
+	-webkit-transition:all 0.8s;	
+	-moz-transition:all 0.8s;	
+	-o-transition:all 0.8s;	
+	transition:all 0.8s;
+}
+
+.mask p{
+	text-align:center;
+	line-height: 150px;
+	color:rgba(255,255,255,0.7);
+	-webkit-transition:all 0.8s;	
+	-moz-transition:all 0.8s;	
+	-o-transition:all 0.8s;	
+	transition:all 0.8s;
+}
+
+.cube1:hover .mask,.cube2:hover .mask,.cube3:hover .mask,.cube4:hover .mask,.cube5:hover .mask,.cube6:hover .mask,.cube7:hover .mask,.cube8:hover .mask,.cube9:hover .mask,.cube10:hover .mask,.middle_side:hover .mask{
+	background:rgba(0,0,0,0.8);
+}
+.cube1:hover p,.cube2:hover p,.cube3:hover p,.cube4:hover p,.cube5:hover p,.cube6:hover p,.cube7:hover p,.cube8:hover p,.cube9:hover p,.cube10:hover p,.middle_side:hover p{
+	color:rgba(255,255,255,1);
+	font-size:28px;
+}

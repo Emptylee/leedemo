@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D</title>
+    <style>
+       #outer{
+        perspective:500px;
+        perspective-origin:50% 50%;
+   
+             overflow:hidden;
+       } 
+       #group{
+        width:200px;
+        height:200px;
+        position:relative;
+        margin:200px auto;
+        transform-style:preserve-3d;
+        -moz-animation:scroll 5s linear 0s infinite;
+        -webkit-animation:scroll 5s linear 0s infinite;
+        -ms-animation:scroll 5s linear 0s infinite;
+        animation:scroll 5s linear 0s infinite;
+       }
+       .page{
+        width:200px;
+        height: 200px;
+        position: absolute;
+        border-radius: 20px;
+        text-align:center;
+        font-weight:bold;
+        opacity:0.5;
+        overflow: hidden;
+        font-size:150px;
+        word-break:break-all;
+        word-wrap:break-word;
+       }
+       #page1{background-color:#f60;}
+       #page2{
+        background-color:#0073b3;
+        transform-origin:right;
+        transform:rotateY(-90deg);
+       }
+       #page3{
+        background-color:#07beea;
+        transform-origin:left;
+        transform:rotateY(90deg);
+       }
+       #page4{
+        background-color:red;
+        transform-origin:top;
+        transform:rotateX(-90deg);
+       }
+       #page5{
+        background-color:#6699cc;
+        transform-origin:bottom;
+        transform:rotateX(90deg);
+       }
+       #page6{
+        background-color:yellow;
+        transform:translateZ(-200px);
+       }
+       @keyframes scroll{
+            0%{transform:rotateX(0deg) rotateY(0deg);}
+            50%{transform:rotateX(0deg) rotateY(360deg);}
+            100%{transform:rotateX(360deg) rotateY(360deg);}
+       }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="group">
+            <div id="page1" class="page">1</div>
+            <div id="page2" class="page">2</div>
+            <div id="page3" class="page">3</div>
+            <div id="page4" class="page">4</div>
+            <div id="page5" class="page">5</div>
+            <div id="page6" class="page">6</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1">
+	<title>学习情况数据分析</title>
+	<!--载入所有资源-->
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery.fullPage.js"></script>
+	<script src="js/lib/jquery-ui.min.js"></script>
+
+
+	<!--H5对象：进行内容管理-->
+	<script src="js/H5.js"></script>
+	<link rel="stylesheet" href="css/H5.css">
+	
+	<script src="js/H5_loading.js"></script>
+	<link rel="stylesheet" href="css/H5_loading.css">
+
+	<!--页面逻辑的样式-->
+	<style>
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	.h5_page{
+		background:url(images/bg_page.png);
+		background-size:100%;
+		background-repeat:no-repeat;
+	}
+	.h5_page_face{
+		background-image: url(images/bg_face.png);
+	}
+	
+	/*在这里单独做slogan抖动效果*/
+	.h5_component_name_slogan{
+		-webkit-animation:rock 2s infinite 2s;
+	}
+	@-webkit-keyframes rock{
+		0%{transform:rotate(0deg);}
+		5%{transform:rotate(6deg);}
+		10%{transform:rotate(-6deg);}
+		15%{transform:rotate(3deg);}
+		20%{transform:rotate(-2deg);}
+		25%{transform:rotate(1deg);}
+		30%{transform:rotate(-1deg);}
+		70%{transform:rotate(0deg);}
+		100%{transform:rotate(0deg);}
+	}
+
+	/*为每页的标题统一做样式*/
+	.h5_component_name_caption{
+		background-image:url(images/caption.png);
+		width:283px;
+		height:109px;
+		text-align:center;
+		line-height:50px;
+		font-size:20px;
+		color:#fff;
+	}
+
+	/*给返回首页图标加抖动效果*/
+	.h5_component_name_back{
+		top:30px;/*0% 100%是这个*/
+		-webkit-animation:back 2s infinite 2s;
+	}
+	@-webkit-keyframes back{
+		50%{top:20px;}
+	}
+	</style>
+</head>
+<body>
+	<!--loading效果 要放在所有具体组件之前-->
+	<div class="loading">
+		<div class="double-bounce1"></div>
+		<div class="double-bounce2"></div>
+		<div id="rate">0%</div>
+	</div>
+
+	<!--加载 H5组件相关资源 用数组遍历-->
+	<script>
+	var resources=['Base','Bar','Bar_v','Point','Polyline','Radar','Pie','Ring'];
+	var html=[];
+	for(s in resources){
+		html.push('<script src="js/H5Component'+resources[s]+'.js"><\/script>');
+		html.push('<link rel=stylesheet type="text/css" href="css/H5Component'+resources[s]+'.css">');
+
+	}
+	document.write(html.join(''));
+	</script>
+
+	<!--主要逻辑-->
+	<script>
+	$(function(){
+		var h5=new H5();
+
+		h5.whenAddPage=function(){
+			this.addComponent('slide_up',{
+				bg:'images/slideup.png',
+				css:{
+					left:0,
+					bottom:-20,
+					width:'100%',
+					height:'20px',
+					zIndex:999,
+				},
+				animateIn:{
+					opacity:1,bottom:'-1px'
+				},
+				animateOut:{opacity:0,bottom:'-20px'},
+				delay:500
+			});
+		}
+		
+		$.getJSON('data.json',function(json){//这个函数将json中的字符串转为对象 以参数形式传入后面的回调函数
+			$.each(json,function(i,item){
+				if(item.isPage){
+					h5.addPage(item.name,item.text);
+				}else{
+					h5.addComponent(item.name,item.cfg);
+				}
+			})
+			h5.loader(['images/tail_logo.png','images/slogan.png','images/slideup.png','images/people.png','images/logo.png','images/caption.png','images/bg_page.png','images/bg_face.png','images/bg_desc.png','images/ad_right.png','images/ad_left.png','images/tail_back.png','images/tail_share.png','images/tail_slogan.png']);
+		});
+
+		$('.h5_component_name_back').click(function(){
+			$.fn.fullpage.moveTo(1);
+		});
+			
+	});
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<title>2016星座运势</title>
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery.fullPage.js"></script>
+	
+	<script src="js/H5.js"></script>
+	<link rel="stylesheet" href="css/H5.css">
+	<!--具体组件-->
+	<script src="js/H5ComponentBar.js"></script>
+	<link rel="stylesheet" href="css/H5ComponentBar.css">
+	<script src="js/H5ComponentCircle.js"></script>
+	<link rel="stylesheet" href="css/H5ComponentCircle.css">
+	<!--loading-->
+	<script src="js/H5Loading.js"></script>
+	<link rel="stylesheet" href="css/H5Loading.css">
+	<style>
+	body{
+		margin:0;
+		padding:0;
+	}
+	.page{
+		width:100%;
+		height:100%;
+		background-color:#000;
+		background-size:100%;
+		background-repeat:no-repeat;
+		font-size:14px;
+		font-weight:700;
+		color:#fff;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="loading">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div id="rate"></div>
+	</div>
+
+
+	<script>
+	$(function(){
+
+		var h5=new H5();
+		h5
+		.addFirstPage()
+		.addSecondPage([
+			{src:'images/baiyang.png',name:'白羊座'},
+			{src:'images/jinniu.png',name:'金牛座'},
+			{src:'images/shuangzi.png',name:'双子座'},
+			{src:'images/juxie.png',name:'巨蟹座'},
+			{src:'images/shizi.png',name:'狮子'},
+			{src:'images/chunv.png',name:'处女座'},
+			{src:'images/tianping.png',name:'天平座'},
+			{src:'images/tianxie.png',name:'天蝎座'},
+			{src:'images/sheshou.png',name:'射手座'},
+			{src:'images/mojie.png',name:'摩羯座'},
+			{src:'images/shuiping.png',name:'水瓶座'},
+			{src:'images/shuangyu.png',name:'双鱼座'}
+			])
+		$.getJSON('mid_data.json',function(json){
+			$.each(json,function(i,item){
+				h5.addMidPage(item);
+			});
+			h5.addFinalPage();
+			h5.loader([
+				'images/baiyang.png',
+				'images/jinniu.png',
+				'images/shuangzi.png',
+				'images/juxie.png',
+				'images/shizi.png',
+				'images/chunv.png',
+				'images/tianping.png',
+				'images/tianxie.png',
+				'images/sheshou.png',
+				'images/mojie.png',
+				'images/shuiping.png',
+				'images/shuangyu.png'
+			]);//为什么这个放外面就没有效果
+		});
+	});
+	</script>
+</body>
+</html>

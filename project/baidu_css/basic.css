@@ -1,0 +1,250 @@
+
+*{
+	padding:0;
+	margin:0;
+}
+ul li{
+	list-style:none;
+}
+a{
+	text-decoration:underline;
+}
+
+/*header*/
+#header{
+	width:100%;
+	height:60px;
+}
+#header ul{
+	float:right;
+}
+#header ul li{
+	float:left;
+	
+}
+#header ul li a{
+	display:inline-block;
+	color:rgb(51,51,51);
+	font-size:13px;
+	font-family: arial;
+	line-height:60px;
+	font-weight:700;
+	vertical-align: baseline;
+	text-decoration: underline;
+	margin-left:22px;
+}
+#header ul li a:hover{
+	color:#00c;
+}
+#header ul li.more{
+	margin-right:12px;
+	line-height: 60px;
+}
+#header ul li.more a{
+	text-decoration: none;
+	display:inline-block;
+	padding:0 5px;
+	height:24px;
+	line-height: 24px;
+	background:#3388FF;
+	color:#fff;
+}
+.inner{
+	position: absolute;
+	top:56px;
+	right:0;
+	border:red;
+	display:none;
+}
+.inner a{
+	display:block;
+	width:86px;
+	height:78px;
+	color:#666;
+	border-bottom:#f0f0f0 1px solid;
+	font:13px arial;
+	text-decoration:none;
+	text-align:center;
+	border:1px solid #f0f0f0;
+	border-left-width:2px;
+
+}
+.inner a span.hover_bg{
+	display:block;
+	width:36px;
+	height: 37px;
+	margin:0 auto;
+	margin-top:5px;
+	margin-bottom:9px;
+}
+.inner a span.hover_bg1{
+	width:42px;
+}
+.inner a[alt="pic1"] span.hover_bg1{
+	background:url(images/hover.png) no-repeat -72px 0;
+}
+.inner a[alt="pic2"] span.hover_bg2{
+	background:url(images/hover.png) no-repeat -112px 0;
+}
+.inner a[alt="pic3"] span.hover_bg3{
+	background:url(images/hover.png) no-repeat -36px 0;
+}
+.inner a[alt="pic4"] span.hover_bg4{
+	background:url(images/hover.png) no-repeat -146px 0;
+}
+.inner a[alt="pic5"] span.hover_bg5{
+	background:url(images/hover.png) no-repeat -186px 0;
+}
+.inner a[alt="pic6"] span.hover_bg6{
+	background:url(images/hover.png) no-repeat -222px 0;
+}
+.inner a:last-child{
+	line-height:3em;
+} 
+.inner a span:hover{
+	text-decoration: underline;
+}
+.more:hover+div.inner,div.inner:hover{
+	display: block;
+}
+/*header end*/
+
+/*main*/
+#main{
+	width:640px;
+	margin:0 auto;
+}
+/*logo*/
+#main #logo img{
+	display: block;
+	margin:0 auto;
+}
+/*logo end*/
+/*search*/
+#main #search{
+	width:640px;
+	height:37px;
+	position:relative;
+	margin-top:32px;
+}
+#main #search form span{
+	display:inline-block;
+	width:539px;
+	height:35px;
+	border:1px solid #b8b8b8;
+	border-right-width:0;
+	text-align:center;
+
+
+}
+#main #search form input[type="text"]{
+	width:500px;
+	height:22px;
+	font:16px/18px arial;
+	margin:6px 33px 0 7px;
+	border:0 #fff;
+	background: transparent;
+}
+#main #search form span:hover{
+	border-color:#838383;
+}
+#main #search form span:focus{
+	border-color:#3385ff;
+}
+#main #search form input[type="submit"]{
+	display: inline-block;
+	width:100px;
+	height:37px;
+	color:#fff;
+	font-size:15px;
+	font-family: arial;
+	font-weight:500;
+	background:#3385ff;
+	border:1px solid #2d78f4;
+	outline:medium;
+	cursor:pointer;
+	position:absolute;
+	left:540px;
+	top:0;
+}
+#main #search form input[type="submit"]:hover{
+	background: #0085ff;
+}
+#main #search form input[type="submit"]:active{
+	background: #0077ff;
+}
+#engine{
+	outline:none;
+}
+/*search end*/
+/*main end*/
+
+/*footer*/
+#footer{
+	margin-top: 244px;
+	width:100%;
+	position: relative;
+}
+#footer img[src="images/footer1.png"]{
+	display: block;
+	width: 62px;
+	height: 62px;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+#footer ul.ul1{
+	position: absolute;
+	left:71px;
+	top:14px;
+}
+#footer ul.ul1 li,#footer ul.ul2 li{
+	font:12px arial;
+}
+#footer ul.ul1 li:first-child,#footer ul.ul2 li:first-child{
+	color:#4c4c4c;
+	font-weight: bold;
+}
+#footer ul.ul1 li:last-child,	#footer ul.ul2 li:last-child{
+	color:#999;
+	margin-top:11px;
+}
+#footer img[src="images/footer2.png"]{
+	position: absolute;
+	left:156px;
+	top:0;
+}
+#footer ul.ul2{
+	position: absolute;
+	left:227px;
+	top:14px;
+}
+#footer ul.ul3{
+	position: absolute;
+	left: 310px;
+	top:12px;
+}
+#footer ul.ul3 li{
+	float: left;
+	margin-right: 21px;
+}
+#footer ul.ul3 li a{
+	font:12px arial;
+	color:#272727;
+	text-decoration: underline;
+}
+#footer p{
+	text-align:center;
+	color:#666;
+	font:12px arial;
+	position: absolute;
+	top:40px;
+	left:310px;
+	padding-right: 15px;
+	background:url(images/icon.png) no-repeat -288px -96px;
+}
+#footer p a{
+	color:#666;
+	font:12px arial;
+}
+/*footer end*/

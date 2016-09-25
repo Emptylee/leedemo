@@ -1,0 +1,16 @@
+/*雷达图样式*/
+.h5_component_radar{
+
+}
+.h5_component_radar canvas{
+	position:absolute;/*用canvas做动画，会进行分层，要用到z-index*/
+	top:0;
+	left:0;
+	width:100%;/*width和height用于将canvas压缩成容器大小 这样canvas中的东西显示在component容器中有双倍分辨率的精致*/
+	height:100%;
+}
+/*文字要在这里设置absolute 以便定位*/
+.h5_component_radar .text{
+	position:absolute;
+	font-size:12px;
+}

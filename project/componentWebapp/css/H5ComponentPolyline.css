@@ -1,0 +1,30 @@
+/*折线图样式*/
+.h5_component_polyline{
+
+}
+.h5_component_polyline canvas{
+	position:absolute;/*用canvas做动画，会进行分层，要用到z-index*/
+	top:0;
+	left:0;
+	width:100%;/*width和height用于将canvas压缩成容器大小 这样canvas中的东西显示在component容器中有双倍分辨率的精致*/
+	height:100%;
+}
+.h5_component_polyline .text{
+	position: absolute;
+	font-size:12px;
+	text-align:center;
+	bottom:-20px;/*将字体下移*/
+	height:20px;
+	line-height: 20px;
+	transform:scale(.8);/*chrome不会显示小于12px的文本 因此要用缩放的方式缩小字体*/
+	transition:all 1s 1.5s;/*延迟1s 先让component和折线图动画完成*/
+	opacity:0;
+}
+
+/*项目名称的动画效果直接在css中做了*/
+.h5_component_polyline_load .text{
+	opacity:1;
+}
+.h5_component_polyline_leave .text{
+	opacity:0;
+}
